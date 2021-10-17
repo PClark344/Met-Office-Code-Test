@@ -76,6 +76,7 @@ def get_dimensions(newline):
 
 def calc_shielding(length, width, height):
 	global individual_total_area
+	
 	individual_area = 0
 	slack = 0
 	left_side_area = 0
@@ -157,17 +158,20 @@ try:
 				
 			sort_dataline(newline)
 
-### do calculations ################################################
+### check for wrong data or data types then do calculations ##########
 			
 			get_dimensions(newline)
-
-			calc_shielding(length,width,height)
-	
-			all_total_areas = all_total_areas + individual_total_area
-
-			calc_wiring(length,width,height)
-
-			all_total_wiring_lengths = all_total_wiring_lengths + individual_total_wiring_length
+			if length == 0 or width == 0 or height == 0:
+				individual_total_area = 0
+				individual_total_wiring_length = 0				
+			elif not(isinstance(length,int) or isinstance(width,int) or isinstance(height,int)):
+				individual_total_area = 0
+				individual_total_wiring_length = 0	
+			else:
+				calc_shielding(length,width,height)
+				all_total_areas = all_total_areas + individual_total_area
+				calc_wiring(length,width,height)
+				all_total_wiring_lengths = all_total_wiring_lengths + individual_total_wiring_length
 
 ### Format output results and write to file ############################
 
