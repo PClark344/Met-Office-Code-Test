@@ -49,32 +49,28 @@ output_file_name = 'results.md'
 
 input_file_list = ['example1.txt','example2.txt','example3.txt']
 	
+#### Produce Sorted Data #################
+
+def sort_dataline(newline):	
+	global newline_sorted
+
+	list_of_integers = [int(i) for i in newline]
+	newline_sorted = sorted(list_of_integers)
+	
+	return newline_sorted
+	
 ### Get dimensions for shielding cube ###########################
 
-def get_dimensions(textline):
-	
+def get_dimensions(newline):
 	global length
 	global width
 	global height
-	global newerline_sorted
 
-### code to extract dimensions ##################################
-
-	newline = textline.rstrip('\n')
-	newerline = newline.split('x')
+	length = int(newline[0])
+	width = int(newline[1])
+	height = int(newline[2])
 	
-### comprehension to convert list of strings into list of integers ##
-	list_of_integers = [int(i) for i in newerline]
-
-#### sort list in ascending numeric order ######################
-
-	newerline_sorted = sorted(list_of_integers)
-
-	length = int(newerline[0])
-	width = int(newerline[1])
-	height = int(newerline[2])
-	
-	return length,width,height, newerline_sorted
+	return length,width,height
 
 ### Calculate side areas and total area ###########################
 
@@ -117,8 +113,8 @@ def calc_wiring(length, width, height):
 					
 ### Find wiring Slack and wiring length ##############################
 
-	smallest_side = int(newerline_sorted[0])
-	second_smallest_side = int(newerline_sorted[1])
+	smallest_side = int(newline_sorted[0])
+	second_smallest_side = int(newline_sorted[1])
 
 	wiring_slack = (2*smallest_side) + (2*second_smallest_side)
 	
@@ -150,17 +146,24 @@ try:
 		all_total_areas = 0
 		all_total_wiring_lengths = 0
 
-		for textline in textlines:
+		for textline in textlines:	
 
-### Calculate Shielding areas #########################################
+### cut out spaces and delimiters ###################################
 
-			get_dimensions(textline)
+			newline = textline.rstrip('\n')
+			newline = newline.rstrip(' ')
+			newline = newline.lstrip(' ')
+			newline = newline.split('x')
+				
+			sort_dataline(newline)
+
+### do calculations ################################################
+			
+			get_dimensions(newline)
 
 			calc_shielding(length,width,height)
 	
 			all_total_areas = all_total_areas + individual_total_area
-
-### Calculate Wiring Lengths #########################################
 
 			calc_wiring(length,width,height)
 
