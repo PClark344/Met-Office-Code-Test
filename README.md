@@ -13,4 +13,4 @@
 # OUTPUT FILE:     results.md
 #
 # TO RUN FILE:     At Bash Prompt in Terminal in correct directory type
-#                  sudo python3 <Program name>
+#                  sudo python3 program
