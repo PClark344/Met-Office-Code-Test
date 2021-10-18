@@ -1,5 +1,5 @@
 ###################################################################
-# AUTHOR:  PAUL DAVID CLARK
+# AUTHOR:          PAUL DAVID CLARK
 #
 # PROGRAM NAME:    PaulClarkMetOfficeShieldingAndWiringExercise.py
 # 
@@ -12,20 +12,16 @@
 # DOCS:            As specified in: 
 #                  https://github.com/mo-rjr/shielding-and-wiring 
 #
-# DATE:            17 October 2021 
-# TIME:            12:00
+# DATE:            18 October 2021 
 # 
 # VERSION:         1.0
 #
-# HOW TO RUN:      In a Python Shell type the Program Name
 # INPUT FILES:     example1.txt, example2.txt and example3.txt
 # OUTPUT FILE:     results.md
+# TEST FILE:       TestShieldingandWiringData.py
 #
 #################################################################
 
-### import required modules #####################################
-
- 
 ### Initialise Variables ########################################
 
 length = 0
