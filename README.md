@@ -1,10 +1,10 @@
 # Met-Office-Code-Test
 
 # Coding Exercise for Met Office Job Application
-# PROGRAM:         PaulClarkMetOfficeShieldingAndWiringExercise.py
-# PURPOSE:         To calculate total area required for
-#                  Shielding and Slack for satellites
-#                  Plus length of wiring needed for each box
+# PROGRAM:         PCMOExampleCode.py
+# PURPOSE:         To calculate total Shielding and wiringrequired for
+#                  for satellites
+#                  
 # DOCS:            As specified in: 
 #                  https://github.com/mo-rjr/shielding-and-wiring 
 # 
@@ -13,4 +13,6 @@
 # OUTPUT FILE:     results.md
 #
 # TO RUN FILE:     At Bash Prompt in Terminal in correct directory type
-#                  sudo python3 program
+#                  sudo python3 PCMOExampleCode.py
+#
+# TESTING:         TestPCMO.py
