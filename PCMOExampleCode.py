@@ -29,8 +29,10 @@
 
 from os import path
 from sys import exit
+import Box
 import Shielding
 import Wiring
+import constant
 
 # Constants
 
@@ -63,35 +65,31 @@ with open(output_file_name,'w') as f:
 for input_file_name in input_file_list:
 
 	with open(input_file_name) as f:
-		shield_area_grand_total = 0
-		wire_length_grand_total = 0
+		shield_area_total = 0
+		wire_length_total = 0
 		
 		textlines = f.readlines()
 
 		for textline in textlines:	
-			shield_area= 0
-			wire_vol= 0			
-			data_line = textline.rstrip('\n')
-			data_line = data_line.rstrip(' ')
-			data_line = data_line.lstrip(' ')
-			data_line = data_line.split('x')				
-	
-			length = int(data_line[0])
-			width = int(data_line[1])
-			height = int(data_line[2])
-			#print(length,width,height)
+			data_items = textline.rstrip('\n').rstrip(' ').lstrip(' ').split('x')	
+			length = int(data_items[0])
+			width = int(data_items[1])
+			height = int(data_items[2])
+			box = Box.box(length, width, height)
 
-			shield = Shielding.shielding(length,width,height)
-			shield_area_total = shield.calc_shielding()
-			shield_area_grand_total = shield_area_grand_total + shield_area_total
+			if (box.isValid() != constant.BOX_DIMENSIONS_OK):
+				print(f"Error found with code {box.isValid()} for line {textline}")
+				break
 
-			wire = Wiring.wiring(length,width,height)
-			wire_length_total = wire.calc_wiring()
-			wire_length_grand_total = wire_length_grand_total + wire_length_total	
+			shield = Shielding.shielding(box)
+			shield_area_total += shield.calc_shielding()
+
+			wire = Wiring.wiring(box)
+			wire_length_total += wire.calc_wiring()
 
 		# write out file data
-		wire_str = str(wire_length_grand_total)
-		shield_str = str(shield_area_grand_total)
+		wire_str = str(wire_length_total)
+		shield_str = str(shield_area_total)
 
 		res_line = ''
 		res_line = ('| ' + input_file_name.ljust(col1_spaces) + ' | ' + shield_str.ljust(col2_spaces) + ' | ' + wire_str.ljust(col3_spaces) + ' | ' + '\n')
