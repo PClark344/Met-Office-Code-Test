@@ -8,11 +8,10 @@
 # DOCS:            As specified in: 
 #                  https://github.com/mo-rjr/shielding-and-wiring 
 # 
-# HOW TO RUN:      In a Python Shell type the Program Name
 # INPUT FILES:     example1.txt, example2.txt and example3.txt
 # OUTPUT FILE:     results.md
 #
-# TO RUN FILE:     At Bash Prompt in Terminal in correct directory type
+# TO RUN FUNCTION: At Bash Prompt in Terminal in correct directory type
 #                  python3 PCMOExampleCode.py
 #
 # TESTING:         TestPCMO.py
