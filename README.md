@@ -13,6 +13,9 @@
 # OUTPUT FILE:     results.md
 #
 # TO RUN FILE:     At Bash Prompt in Terminal in correct directory type
-#                  sudo python3 PCMOExampleCode.py
+#                  python3 PCMOExampleCode.py
 #
 # TESTING:         TestPCMO.py
+# TO RUN TESTS:    At Bash prompt type:
+#                  python3 TestPCMO.py -v
+
