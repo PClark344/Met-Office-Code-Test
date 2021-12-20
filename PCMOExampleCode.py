@@ -78,7 +78,7 @@ for input_file_name in input_file_list:
 			box = Box.box(length, width, height)
 
 			if (box.isValid() != constant.BOX_DIMENSIONS_OK):
-				print(f"Error found with code {box.isValid()} for line {textline}")
+				print("Error found with code ",box.isValid()," for line ",textline)
 				break
 
 			shield = Shielding.shielding(box)

@@ -37,7 +37,9 @@ class box:
 		
 	def __get_two_smallest_sides(self):
 
-		smallest, next_smallest, *_ = sorted([self.height, self.length, self.width])
+		sort_side_sizes = sorted([self.height, self.length, self.width])
+		smallest = sort_side_sizes[0]
+		next_smallest = sort_side_sizes[1]
 		return smallest, next_smallest
 
 
